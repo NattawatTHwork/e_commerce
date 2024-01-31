@@ -3,9 +3,9 @@ import bcrypt from 'bcrypt';
 
 export default async (req, res) => {
     try {
-        const { username, password, role } = req.body;
+        const { username, password, role, status } = req.body;
 
-        if (!username || !password || !role) {
+        if (!username || !password || !role || !status) {
             return res.status(400).json({ error: 'Invalid input data' });
         }
 

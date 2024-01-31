@@ -21,7 +21,9 @@ export default async (req, res) => {
             description,
             price,
             amount,
-            image_path
+            image_path,
+            status: 1,
+            deleted: 1
         });
 
         if (result.acknowledged) {

@@ -4,9 +4,9 @@ import clientPromise from '../../../lib/mongodb';
 export default async (req, res) => {
     try {
         const { id } = req.query;
-        const { product_name, description, price, amount, image_path } = req.body;
+        const { product_name, description, price, amount, image_path, status } = req.body;
 
-        if (!product_name || !description || !price || !amount || !image_path) {
+        if (!product_name || !description || !price || !amount || !image_path || !status) {
             return res.status(400).json({ error: 'Invalid input data' });
         }
 
@@ -27,11 +27,11 @@ export default async (req, res) => {
                     description: description,
                     price: price,
                     amount: amount,
-                    image_path: image_path
+                    image_path: image_path,
+                    status: status
                 }
             }
         );
-        res.json(result)
 
         if (result.matchedCount === 1) {
             return res.json({ message: 'Product updated successfully' });
